@@ -1,13 +1,18 @@
 @echo off
 setlocal
-cd /d "%~dp0"
-set "APP_URL=http://localhost:8080"
 
-echo FasalSathi main website: %APP_URL%
+cd /d "%~dp0"
+
+echo Starting FasalSathi...
 echo.
 
 call "%~dp0setup-and-run.bat"
-if errorlevel 1 exit /b %errorlevel%
-start "" "%APP_URL%"
-echo FasalSathi is running at %APP_URL%.
+
+if errorlevel 1 (
+    echo.
+    echo ERROR: FasalSathi failed to start.
+    pause
+    exit /b 1
+)
+
 exit /b 0
